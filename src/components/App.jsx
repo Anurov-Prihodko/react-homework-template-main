@@ -3,6 +3,7 @@ import Statistics from './statistics/Statistics';
 import FriendList from './friendList/FriendList';
 import TransactionHistory from './transactionHistory/TransactionHistory';
 
+import getRandomColor from 'utils/getRandomColor';
 import userData from '../user.json';
 import statisticsData from '../data.json';
 import friendsData from '../friends.json';
@@ -14,7 +15,6 @@ export const App = () => {
   return (
     <div
       style={{
-        // height: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -30,7 +30,11 @@ export const App = () => {
         avatarUrl={avatar}
         userStats={stats}
       />
-      <Statistics title="Upload stat" stats={statisticsData} />
+      <Statistics
+        title="Upload stat"
+        stats={statisticsData}
+        changeColor={getRandomColor()}
+      />
       <FriendList friends={friendsData} />
       <TransactionHistory items={transactionsData} />
     </div>
