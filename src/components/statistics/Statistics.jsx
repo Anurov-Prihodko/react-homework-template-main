@@ -1,15 +1,23 @@
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
+
+import getRandomColor from 'utils/getRandomColor';
+import style from './Statistics.module.css';
 
 function Statistics({ title, stats }) {
-  return (
-    <section className="statistics">
-      {title && <h2 className="title">{title}</h2>}
+  const changeBackgroundColor = {
+    'background-color': getRandomColor(),
+  };
 
-      <ul className="stat-list">
+  return (
+    <section className={style.statistics}>
+      {title && <h2 className={style.title}>{title}</h2>}
+
+      <ul className={style.statList}>
         {stats.map(item => (
-          <li key={item.id} className="item">
-            <span className="label">{item.label}</span>
-            <span className="percentage">{item.percentage}</span>
+          <li key={item.id} className={clsx(style.item, changeBackgroundColor)}>
+            <span className={style.label}>{item.label}</span>
+            <span className={style.percentage}>{item.percentage}%</span>
           </li>
         ))}
       </ul>
